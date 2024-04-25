@@ -1,6 +1,11 @@
 export default class Account {
   #balance = 0;
   #hasRightToOverdraft = false;
+  #overdraftLimit;
+
+  constructor(overdraftPrivileges) {
+    this.#hasRightToOverdraft = overdraftPrivileges;
+  }
 
   getBalance() {
     return this.#balance;
@@ -26,5 +31,15 @@ export default class Account {
     } else {
       this.#balance -= amount;
     }
+  }
+
+  setOverdraftLimit(amount) {
+    if (this.#hasRightToOverdraft) {
+      this.#overdraftLimit = amount;
+    }
+  }
+
+  getOverdraftLimit() {
+    return this.#overdraftLimit;
   }
 }
