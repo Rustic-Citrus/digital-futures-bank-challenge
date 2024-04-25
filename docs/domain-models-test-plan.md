@@ -109,7 +109,7 @@
 * [X] It should update the balance of the account *if* an amount is deposited.
 * [X] It should raise an error *if* the user tries to deposit a negative amount.
 * [X] It should increase the number of transactions stored in the Account object by 1 when a deposit is made.
-* [ ] It should store the transaction as an object with the date, amount and balance after the transaction.
+* [ ] It should store the transaction as an object with the date string, amount string and balance string after the transaction.
  
 ### A function that withdraws a specific amount from the account *if* the value of the withdrawal is less than the balance of the account *or* the value of the withdrawal is less than the sum of the value of the overdraft and the balance of the account.
 

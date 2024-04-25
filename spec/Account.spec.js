@@ -32,6 +32,18 @@ describe("Account Class Tests,", () => {
 
       expect(testAccount.getTransactions().length).toBe(1);
     });
+
+    it("should store the transaction as an object with the date string, amount string and balance string after the transaction", () => {
+      testAccount.deposit(60, "2012-01-14");
+
+      const transactions = testAccount.getTransactions();
+      
+      expect(transactions).toEqual([{
+        amount: "£60.00",
+        date: "2012-01-14",
+        balance: "£60.00"
+      }])
+    })
   });
 
   describe("Account.withdraw() Tests,", () => {
