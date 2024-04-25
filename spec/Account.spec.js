@@ -85,7 +85,14 @@ describe("Account Class Tests,", () => {
 
       expect(testFunc).toThrowError("Overdraft limit exceeded.");
       expect(testAccount.getBalance() + testAccount.getOverdraftLimit()).toBe(75);
-    })
+    });
+
+    it("should increase the number of transactions stored in the Account object by 1 when a withdrawal is made", () => {
+      testAccount.deposit(50);
+      testAccount.withdraw(10);
+
+      expect(testAccount.getTransactions().length).toBe(2);
+    });
   });
 
   describe("Account.setOverdraftLimit() Tests,", () => {
