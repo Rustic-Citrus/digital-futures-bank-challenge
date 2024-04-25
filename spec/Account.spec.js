@@ -12,13 +12,13 @@ describe("Account Class Tests, ", () => {
   });
 
   describe("Account.deposit() Tests, ", () => {
-    it("should update the balance of the account if an amount is deposited.", () => {
+    it("should update the balance of the account if an amount is deposited", () => {
       testAccount.deposit(100);
 
       expect(testAccount.getBalance()).toBe(100);
     });
 
-    it("should raise an error if the user tries to deposit a negative amount.", () => {
+    it("should raise an error if the user tries to deposit a negative amount", () => {
       const testFunc = () => {
         testAccount.deposit(-50);
       }
@@ -35,6 +35,14 @@ describe("Account Class Tests, ", () => {
       testAccount.withdraw(50);
 
       expect(testAccount.getBalance()).toBe(50);
+    });
+
+    it("should raise an error if an account without an overdraft limit tries to withdraw an amount that is greater than its balance", () => {
+      const testFunc = () => {
+        testAccount.withdraw(50);
+      };
+
+      expect(testFunc).toThrowError(Error, "Account does not have overdraft limit. Cannot withdraw more than current balance.");
     });
   });
 });
