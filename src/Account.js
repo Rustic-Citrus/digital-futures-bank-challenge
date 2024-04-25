@@ -28,6 +28,8 @@ export default class Account {
       throw Error("Account does not have overdraft limit. Cannot withdraw more than current balance.");
     } else if (amount < 0) {
       throw Error("Cannot withdraw a negative amount.");
+    } else if (amount > (this.#balance + this.#overdraftLimit)) {
+      throw Error("Overdraft limit exceeded.");
     } else {
       this.#balance -= amount;
     }
