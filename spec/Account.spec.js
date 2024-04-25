@@ -25,5 +25,16 @@ describe("Account Class Tests, ", () => {
 
       expect(testFunc).toThrowError(Error, "Cannot deposit a negative amount.");
     });
+
+  });
+
+  describe("Account.withdraw() Tests ", () => {
+    it("should update the balance if an amount is withdrawn", () => {
+      testAccount.deposit(100);
+
+      testAccount.withdraw(50);
+
+      expect(testAccount.getBalance()).toBe(50);
+    });
   });
 });
