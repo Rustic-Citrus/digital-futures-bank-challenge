@@ -65,6 +65,19 @@ describe("Account Class Tests,", () => {
       expect(testFunc).not.toThrowError();
       expect(testAccount.getBalance() + testAccount.getOverdraftLimit()).toBe(0);
     });
+
+    it("should raise an error if an account with an overdraft limit tries to withdraw funds and the amount is greater than the sum of that account's balance and overdraft limit", () => {
+      testAccount = new Account(true);
+      testAccount.deposit(50);
+      testAccount.setOverdraftLimit(25);
+
+      const testFunc = () => {
+        testAccount.withdraw(100);
+      };
+
+      expect(testFunc).toThrowError("Overdraft limit exceeded.");
+      expect(testAccount.getBalance() + testAccount.getOverdraftLimit()).toBe(75);
+    })
   });
 
   describe("Account.setOverdraftLimit() Tests,", () => {
