@@ -106,7 +106,7 @@
 ### A function that withdraws a specific amount from the account *if* the value of the withdrawal is less than the balance of the account *or* the value of the withdrawal is less than the sum of the value of the overdraft and the balance of the account.
 
 * [X] It should update the balance *if* an amount is withdrawn.
-* [ ] It should withdraw funds from an account *if* the amount is positive *and* the amount is less than the balance.
+* [ ] ~~It should withdraw funds from an account *if* the amount is positive *and* the amount is less than the balance.~~ [Implicit in the success of the three other tests in this suite]
 * [X] It should raise an error *if* an account without an overdraft limit tries to withdraw an amount that is greater than its balance.
 * [X] It should raise an error *if* an account tries to withdraw a negative amount.
 
