@@ -2,6 +2,7 @@ export default class Account {
   #balance = 0;
   #hasRightToOverdraft = false;
   #overdraftLimit;
+  #transactions = new Array();
 
   constructor(overdraftPrivileges) {
     this.#hasRightToOverdraft = overdraftPrivileges;
@@ -15,11 +16,12 @@ export default class Account {
     return this.#hasRightToOverdraft;
   }
 
-  deposit(amount) {
+  deposit(amount, date) {
     if (amount < 0) {
       throw Error("Cannot deposit a negative amount.");
     } else {
       this.#balance += amount;
+      this.#transactions.push({ amount, date, balance: this.#balance });
     }
   }
 
@@ -43,5 +45,9 @@ export default class Account {
 
   getOverdraftLimit() {
     return this.#overdraftLimit;
+  }
+
+  getTransactions() {
+    return this.#transactions;
   }
 }

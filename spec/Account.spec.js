@@ -31,7 +31,7 @@ describe("Account Class Tests,", () => {
       testAccount.deposit(100);
 
       expect(testAccount.getTransactions().length).toBe(1);
-    })
+    });
   });
 
   describe("Account.withdraw() Tests,", () => {
