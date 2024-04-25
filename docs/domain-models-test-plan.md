@@ -109,7 +109,7 @@
 ### A function that withdraws a specific amount from the account *if* the value of the withdrawal is less than the balance of the account *or* the value of the withdrawal is less than the sum of the value of the overdraft and the balance of the account.
 
 * [X] It should update the balance *if* an amount is withdrawn.
-* [ ] ~~It should withdraw funds from an account *if* the amount is positive *and* the amount is less than the balance.~~ [Implicit in the success of the three other tests in this suite]
+* [X] ~~It should withdraw funds from an account *if* the amount is positive *and* the amount is less than the balance.~~ [Implicit in the success of the three other tests in this suite]
 * [X] It should raise an error *if* an account without an overdraft limit tries to withdraw an amount that is greater than its balance.
 * [X] It should raise an error *if* an account tries to withdraw a negative amount.
 
@@ -118,7 +118,7 @@
 * [X] It should update the account's overdraft limit *if* the account has the right to an overdraft.
 * [X] ~~It should not update the account's overdraft limit *if* the account does not have the right to an overdraft.~~ [Implicit in the phrasing of the previous test]
 * [X] It should withdraw funds from an account *if* an account with an overdraft attempts to make a withdrawal *and* the amount is *less than or equal to* the sum of that account's balance and overdraft limit.
-* [ ] It should raise an error *if* an account with an overdraft limit tries to withdraw funds *and* the amount is *greater than* the sum of that account's balance and overdraft limit.
+* [X] It should raise an error *if* an account with an overdraft limit tries to withdraw funds *and* the amount is *greater than* the sum of that account's balance and overdraft limit.
 
 ### A function that prints to the console the date and amount of each transaction, as well as the new balance after the transaction, in a suitably formatted table, with debits shown in red and credits shown in green.
 
