@@ -33,7 +33,7 @@ describe("Account Class Tests,", () => {
       expect(testAccount.getTransactions().length).toBe(1);
     });
 
-    it("should store the transaction as an object with the date string, amount string and balance string after the transaction", () => {
+    it("should store the transaction as an object with the date string, amount string and balance string after a deposit", () => {
       testAccount.deposit(60, "14/01/2012");
 
       const transactions = testAccount.getTransactions();
@@ -42,8 +42,8 @@ describe("Account Class Tests,", () => {
         amount: "£60.00",
         date: "14/01/2012",
         balance: "£60.00"
-      }])
-    })
+      }]);
+    });
   });
 
   describe("Account.withdraw() Tests,", () => {
@@ -104,6 +104,21 @@ describe("Account Class Tests,", () => {
       testAccount.withdraw(10);
 
       expect(testAccount.getTransactions().length).toBe(2);
+    });
+
+    it("should store the transaction as an object with the date string, amount string and balance string after a withdrawal", () => {
+      testAccount = new Account(true);
+      testAccount.setOverdraftLimit(50);
+      
+      testAccount.withdraw(25, "14/01/2012");
+
+      const transactions = testAccount.getTransactions();
+      
+      expect(transactions).toEqual([{
+        amount: "-£25.00",
+        date: "14/01/2012",
+        balance: "-£25.00"
+      }]);
     });
   });
 
