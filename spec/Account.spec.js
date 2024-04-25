@@ -51,7 +51,20 @@ describe("Account Class Tests,", () => {
       };
 
       expect(testFunc).toThrowError(Error, "Cannot withdraw a negative amount.");
-    })
+    });
+
+    it("should withdraw funds from an account if an account with an overdraft attempts to make a withdrawal and the amount is less than or equal to the sum of that account's balance and overdraft limit", () => {
+      testAccount = new Account(true);
+      testAccount.deposit(50);
+      testAccount.setOverdraftLimit(25);
+
+      const testFunc = () => {
+        testAccount.withdraw(75);
+      };
+
+      expect(testFunc).not.toThrowError();
+      expect(testAccount.getBalance() + testAccount.getOverdraftLimit()).toBe(0);
+    });
   });
 
   describe("Account.setOverdraftLimit() Tests,", () => {
@@ -62,6 +75,6 @@ describe("Account Class Tests,", () => {
       testAccount.setOverdraftLimit(50);
 
       expect(testAccount.getOverdraftLimit()).toBe(50);
-    })
-  })
+    });
+  });
 });
