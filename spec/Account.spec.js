@@ -34,13 +34,13 @@ describe("Account Class Tests,", () => {
     });
 
     it("should store the transaction as an object with the date string, amount string and balance string after the transaction", () => {
-      testAccount.deposit(60, "2012-01-14");
+      testAccount.deposit(60, "14/01/2012");
 
       const transactions = testAccount.getTransactions();
       
       expect(transactions).toEqual([{
         amount: "£60.00",
-        date: "2012-01-14",
+        date: "14/01/2012",
         balance: "£60.00"
       }])
     })

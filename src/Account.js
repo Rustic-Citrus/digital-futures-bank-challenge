@@ -21,7 +21,7 @@ export default class Account {
       throw Error("Cannot deposit a negative amount.");
     } else {
       this.#balance += amount;
-      this.#transactions.push({ amount, date, balance: this.#balance });
+      this.#transactions.push({ amount: `£${amount.toFixed(2)}`, date, balance: `£${this.#balance.toFixed(2)}` });
     }
   }
 
