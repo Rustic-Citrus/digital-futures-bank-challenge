@@ -75,15 +75,17 @@
 
 ### A function that adds an overdraft to the account, which takes a number as an argument, *if* the account has the right to an overdraft.
 
-| Object             | Property | Message                             | Output |
-| ------------------ | -------- | ----------------------------------- | ------ |
-| `AccountStatement` |          | `AccountStatement.printStatement()` |        |
-
-### A function that prints to the console the date and amount of each transaction, as well as the new balance after the transaction, in a suitably formatted table, with debits shown in red and credits shown in green.
-
 | Object    | Property                                | Message                           | Output   |
 | --------- | --------------------------------------- | --------------------------------- | -------- |
 | `Account` | `Account.#hasRightToOverdraft` @Boolean | `Account.checkRightToOverdraft()` | @Boolean |
+|  | `Account.#overdraftLimit` @Number | `Account.setOverdraftLimit(num)` |  |
+
+
+###  A function that prints to the console the date and amount of each transaction, as well as the new balance after the transaction, in a suitably formatted table, with debits shown in red and credits shown in green.
+
+| Object             | Property | Message                             | Output |
+| ------------------ | -------- | ----------------------------------- | ------ |
+| `AccountStatement` |          | `AccountStatement.printStatement()` |        |
 
 ### Summary
 
@@ -94,6 +96,7 @@
 |                    |                                         | `Account.withdraw(num)`            |          |
 |                    | `Account.#hasRightToOverdraft` @Boolean | `Account.checkRightToOverdraft()`  | @Boolean |
 |                    | `Account.#overdraftLimit` @Number       | `Account.getOverdraftLimit()`      | @Number  |
+|                    |       | `Account.setOverdraftLimit(num)`   |          |
 | `AccountStatement` |                                         | `AccountStatement.printStatement()` |          |
 
 ## Test Cases
@@ -112,8 +115,8 @@
 
 ### A function that adds an overdraft to the account, which takes a number as an argument, *if* the account has the right to an overdraft.
 
+* [ ] It should update the account's overdraft limit *if* the account has the right to an overdraft.
 * [ ] It should not update the account's overdraft limit *if* the account does not have the right to an overdraft.
-* [ ] It should update the account's overdraft limit.
 * [ ] It should withdraw funds from an account *if* an account with an overdraft attempts to make a withdrawal *and* the amount is *less than or equal to* the sum of that account's balance and overdraft limit.
 * [ ] It should raise an error *if* an account with an overdraft limit tries to withdraw funds *and* the amount is *greater than* the sum of that account's balance and overdraft limit.
 
