@@ -19,9 +19,11 @@ describe("Account Class Tests, ", () => {
     });
 
     it("should raise an error if the user tries to deposit a negative amount.", () => {
-      testAccount.deposit(-50);
+      const testFunc = () => {
+        testAccount.deposit(-50);
+      }
 
-      expect(testAccount.deposit).toThrowError(Error, "Cannot deposit a negative amount.");
+      expect(testFunc).toThrowError(Error, "Cannot deposit a negative amount.");
     });
   });
 });

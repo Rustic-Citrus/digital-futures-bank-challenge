@@ -6,6 +6,10 @@ export default class Account {
   }
 
   deposit(amount) {
-    this.#balance += amount;
+    if (amount < 0) {
+      throw Error("Cannot deposit a negative amount.");
+    } else {
+      this.#balance += amount;
+    }
   }
 }
