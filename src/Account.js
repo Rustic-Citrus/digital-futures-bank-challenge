@@ -1,8 +1,13 @@
 export default class Account {
   #balance = 0;
+  #hasRightToOverdraft = false;
 
   getBalance() {
     return this.#balance;
+  }
+
+  checkRightToOverdraft() {
+    return this.#hasRightToOverdraft;
   }
 
   deposit(amount) {
@@ -14,6 +19,10 @@ export default class Account {
   }
 
   withdraw(amount) {
-    this.#balance -= amount;
+    if (amount > this.#balance && !this.#hasRightToOverdraft) {
+      throw Error("Account does not have overdraft limit. Cannot withdraw more than current balance.");
+    } else {
+      this.#balance -= amount;
+    }
   }
 }
