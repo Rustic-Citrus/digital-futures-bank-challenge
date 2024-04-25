@@ -16,6 +16,8 @@
       - [Increased data reliability and safety](#increased-data-reliability-and-safety)
       - [Faster service for customers](#faster-service-for-customers)
     - [Risks](#risks)
+      - [Vulnerability to cyber attacks](#vulnerability-to-cyber-attacks)
+      - [Dependence on electrical power](#dependence-on-electrical-power)
     - [Conclusion](#conclusion)
 
 ### Introduction
@@ -44,4 +46,16 @@ In the past, it could take days or even weeks for banks to cash a cheque. They h
 
 ### Risks
 
+While making the transfer to digital has a lot of benefits, it would be dishonest not to acknowledge the risks. The most noteworthy are below.
+
+#### Vulnerability to cyber attacks
+
+In the same way that disgruntled employees and criminals can infiltrate the physical records of a bank, so too can hackers penetrate vulnerable digital systems. Good practices and systems that protect passwords and login information can reduce exposure to such attacks. Equally, investment in cyber security and security management systems can decrease the risk.
+
+#### Dependence on electrical power
+
+In the event of a power cut, a bank branch that is dependent upon digital systems could be left stranded, leaving customers and employees without access to the system. To reduce the impact of this risk, it is advisable for the bank to make a proportional investment in sustainable power sources that are able to compensate in the event of power outages, such as wind or solar power.
+
 ### Conclusion
+
+While we acknowledge the existence of risks in the implementation of a digital banking system, we at Digital Futures are confident that the potential advantages to Thompson Family Banking Ltd outweigh the potential risks, especially when conscientious countermeasures are put in place. With that said, we believe that our CLI Banking Application provides a good example of how Thompson Banking could benefit from the use of technology.
