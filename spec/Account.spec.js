@@ -27,6 +27,11 @@ describe("Account Class Tests,", () => {
       expect(testAccount.getBalance()).toBe(0);
     });
 
+    it("should increase the number of transactions stored in the Account object by 1 when a deposit is made", () => {
+      testAccount.deposit(100);
+
+      expect(testAccount.getTransactions().length).toBe(1);
+    })
   });
 
   describe("Account.withdraw() Tests,", () => {
