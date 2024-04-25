@@ -23,7 +23,7 @@
     - [A function that prints to the console the date and amount of each transaction, as well as the new balance after the transaction, in a suitably formatted table, with debits shown in red and credits shown in green.](#a-function-that-prints-to-the-console-the-date-and-amount-of-each-transaction-as-well-as-the-new-balance-after-the-transaction-in-a-suitably-formatted-table-with-debits-shown-in-red-and-credits-shown-in-green-1)
     - [Summary](#summary)
   - [Test Cases](#test-cases)
-    - [A function that deposits a specific amount into an account.](#a-function-that-deposits-a-specific-amount-into-an-account)
+    - [A function that deposits a specific amount into an account, and saves the transaction data with the date and the resulting change in the balance.](#a-function-that-deposits-a-specific-amount-into-an-account-and-saves-the-transaction-data-with-the-date-and-the-resulting-change-in-the-balance-2)
     - [A function that withdraws a specific amount from the account *if* the value of the withdrawal is less than the balance of the account *or* the value of the withdrawal is less than the sum of the value of the overdraft and the balance of the account.](#a-function-that-withdraws-a-specific-amount-from-the-account-if-the-value-of-the-withdrawal-is-less-than-the-balance-of-the-account-or-the-value-of-the-withdrawal-is-less-than-the-sum-of-the-value-of-the-overdraft-and-the-balance-of-the-account)
     - [A function that adds an overdraft to the account, which takes a number as an argument, *if* the account has the right to an overdraft.](#a-function-that-adds-an-overdraft-to-the-account-which-takes-a-number-as-an-argument-if-the-account-has-the-right-to-an-overdraft-2)
     - [A function that prints to the console the date and amount of each transaction, as well as the new balance after the transaction, in a suitably formatted table, with debits shown in red and credits shown in green.](#a-function-that-prints-to-the-console-the-date-and-amount-of-each-transaction-as-well-as-the-new-balance-after-the-transaction-in-a-suitably-formatted-table-with-debits-shown-in-red-and-credits-shown-in-green-2)
@@ -104,19 +104,20 @@
 
 ## Test Cases
 
-### A function that deposits a specific amount into an account.
+### A function that deposits a specific amount into an account, and saves the transaction data with the date and the resulting change in the balance.
 
 * [X] It should update the balance of the account *if* an amount is deposited.
 * [X] It should raise an error *if* the user tries to deposit a negative amount.
 * [X] It should increase the number of transactions stored in the Account object by 1 when a deposit is made.
-
+* [ ] It should store the transaction as an object with the date, amount and balance after the transaction.
+ 
 ### A function that withdraws a specific amount from the account *if* the value of the withdrawal is less than the balance of the account *or* the value of the withdrawal is less than the sum of the value of the overdraft and the balance of the account.
 
 * [X] It should update the balance *if* an amount is withdrawn.
 * [X] ~~It should withdraw funds from an account *if* the amount is positive *and* the amount is less than the balance.~~ [Implicit in the success of the three other tests in this suite]
 * [X] It should raise an error *if* an account without an overdraft limit tries to withdraw an amount that is greater than its balance.
 * [X] It should raise an error *if* an account tries to withdraw a negative amount.
-* [ ] It should increase the number of transactions stored in the Account object by 1 when a withdrawal is made.
+* [X] It should increase the number of transactions stored in the Account object by 1 when a withdrawal is made.
 
 ### A function that adds an overdraft to the account, which takes a number as an argument, *if* the account has the right to an overdraft.
 
