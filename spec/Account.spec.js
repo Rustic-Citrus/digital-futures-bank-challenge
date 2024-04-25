@@ -53,4 +53,15 @@ describe("Account Class Tests,", () => {
       expect(testFunc).toThrowError(Error, "Cannot withdraw a negative amount.");
     })
   });
+
+  describe("Account.setOverdraftLimit() Tests,", () => {
+    it("should update the account's overdraft limit if the account has the right to an overdraft", () => {
+      testAccount = undefined;
+      testAccount = new Account(true);
+
+      testAccount.setOverdraftLimit(50);
+
+      expect(testAccount.getOverdraftLimit()).toBe(50);
+    })
+  })
 });
