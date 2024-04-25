@@ -25,7 +25,7 @@ export default class Account {
     }
   }
 
-  withdraw(amount) {
+  withdraw(amount, date) {
     if (amount > this.#balance && !this.#hasRightToOverdraft) {
       throw Error("Account does not have overdraft limit. Cannot withdraw more than current balance.");
     } else if (amount < 0) {
@@ -34,6 +34,7 @@ export default class Account {
       throw Error("Overdraft limit exceeded.");
     } else {
       this.#balance -= amount;
+      this.#transactions.push({ amount, date, balance: this.#balance });
     }
   }
 
