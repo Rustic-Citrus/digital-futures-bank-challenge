@@ -1,6 +1,6 @@
 import Account from "../src/Account.js";
 
-describe("Account Class Tests, ", () => {
+describe("Account Class Tests,", () => {
   let testAccount;
 
   beforeEach(() => {
@@ -11,7 +11,7 @@ describe("Account Class Tests, ", () => {
     testAccount = undefined;
   });
 
-  describe("Account.deposit() Tests, ", () => {
+  describe("Account.deposit() Tests,", () => {
     it("should update the balance of the account if an amount is deposited", () => {
       testAccount.deposit(100);
 
@@ -28,7 +28,7 @@ describe("Account Class Tests, ", () => {
 
   });
 
-  describe("Account.withdraw() Tests ", () => {
+  describe("Account.withdraw() Tests,", () => {
     it("should update the balance if an amount is withdrawn", () => {
       testAccount.deposit(100);
 
@@ -44,5 +44,13 @@ describe("Account Class Tests, ", () => {
 
       expect(testFunc).toThrowError(Error, "Account does not have overdraft limit. Cannot withdraw more than current balance.");
     });
+
+    it("should raise an error if an account tries to withdraw a negative amount", () => {
+      const testFunc = () => {
+        testAccount.withdraw(-50);
+      };
+
+      expect(testFunc).toThrowError(Error, "Cannot withdraw a negative amount.");
+    })
   });
 });
