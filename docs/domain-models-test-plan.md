@@ -108,7 +108,7 @@
 * [X] It should update the balance *if* an amount is withdrawn.
 * [ ] It should withdraw funds from an account *if* the amount is positive *and* the amount is less than the balance.
 * [X] It should raise an error *if* an account without an overdraft limit tries to withdraw an amount that is greater than its balance.
-* [ ] It should raise an error *if* an account tries to withdraw a negative amount.
+* [X] It should raise an error *if* an account tries to withdraw a negative amount.
 
 ### A function that adds an overdraft to the account, which takes a number as an argument, *if* the account has the right to an overdraft.
 
