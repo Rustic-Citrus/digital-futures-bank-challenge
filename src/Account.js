@@ -21,8 +21,7 @@ export default class Account {
       throw Error("Cannot deposit a negative amount.");
     } else {
       this.#balance += amount;
-      const balanceString = this.#balance >= 0 ? `£${this.#balance.toFixed(2)}` : `-£${Math.abs(this.#balance).toFixed(2)}`;
-      this.#transactions.push({ amount: `£${amount.toFixed(2)}`, date, balance: balanceString });
+      this.#transactions.push({ credit: amount, debit: 0, date, balance: this.#balance });
     }
   }
 
@@ -35,8 +34,7 @@ export default class Account {
       throw Error("Overdraft limit exceeded.");
     } else {
       this.#balance -= amount;
-      const balanceString = this.#balance >= 0 ? `£${this.#balance.toFixed(2)}` : `-£${Math.abs(this.#balance).toFixed(2)}`;
-      this.#transactions.push({ amount: `-£${amount.toFixed(2)}`, date, balance: balanceString });
+      this.#transactions.push({ credit: 0, debit: amount, date, balance: this.#balance });
     }
   }
 
