@@ -65,7 +65,17 @@ export default class AccountStatement {
       };
 
       const width = cols.find(findFunc).width;
-      const valueString = transaction[colName] != 0 ? transaction[colName].toFixed(2) : "";
+
+      let valueString;
+      if (colName === "credit" && transaction[colName] != 0) {
+        valueString = `\x1b[32m${transaction[colName].toFixed(2)}\x1b[0m`;
+      } else if (colName === "debit" && transaction[colName] != 0) {
+        valueString = `\x1b[31m${transaction[colName].toFixed(2)}\x1b[0m`;
+      } else if (colName === "balance") {
+        valueString = transaction[colName].toFixed(2);
+      } else {
+        valueString = "";
+      }
 
       const cell = colName != "balance" ? ` ${valueString} `.padEnd(width, " ") + "||" : ` ${valueString}`.padEnd(width, " ");
 
