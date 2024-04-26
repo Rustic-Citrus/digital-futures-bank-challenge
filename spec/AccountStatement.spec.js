@@ -27,7 +27,7 @@ describe("AccountStatement Class Tests,", () => {
     expect(console.log.calls.count()).toBe(4);
 
     expectedLines.forEach((string, i) => {
-      expect(console.log.calls.argsFor(i)).toEqual(string);
+      expect(console.log.calls.argsFor(i)[0]).toEqual(string);
     });
   });
 });
