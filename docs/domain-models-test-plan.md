@@ -129,5 +129,5 @@
 
 ### A function that prints to the console the date and amount of each transaction, as well as the new balance after the transaction, in a suitably formatted table, with debits shown in red and credits shown in green.
 
-* [X] It should show the statement in the console in the correct format.
-* [ ] It should show the debits in red and the credits in green.
+* [X] It should show the statement spread across the correct number of lines.
+* [X] It should show the correct information, formatted correctly, with debits in red and credits in green.
