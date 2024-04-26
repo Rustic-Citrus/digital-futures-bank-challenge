@@ -71,8 +71,10 @@ export default class AccountStatement {
         valueString = `\x1b[32m${transaction[colName].toFixed(2)}\x1b[0m`;
       } else if (colName === "debit" && transaction[colName] != 0) {
         valueString = `\x1b[31m${transaction[colName].toFixed(2)}\x1b[0m`;
-      } else if (colName === "balance") {
-        valueString = transaction[colName].toFixed(2);
+      } else if (colName === "balance" && transaction[colName] > 0) {
+        valueString = `\x1b[32m${transaction[colName].toFixed(2)}\x1b[0m`;
+      } else if (colName === "balance" && transaction[colName] <= 0) {
+        valueString = `\x1b[31m${transaction[colName].toFixed(2)}\x1b[0m`;
       } else {
         valueString = "";
       }
