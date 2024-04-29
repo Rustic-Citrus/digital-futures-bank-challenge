@@ -79,7 +79,7 @@ export default class AccountStatement {
         valueString = "";
       }
 
-      const cell = colName != "balance" ? ` ${valueString} `.padEnd(width, " ") + "||" : ` ${valueString}`.padEnd(width, " ");
+      const cell = colName != "balance" ? ` ${valueString} `.padEnd(width, " ") + "||" : ` ${valueString} `.padEnd(width, " ");
 
       cells.push(cell);
     });
