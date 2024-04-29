@@ -1,3 +1,5 @@
+import { getMaxStringLength } from "../utils/util.js";
+
 export default class AccountStatement {
   #account;
 
@@ -5,20 +7,10 @@ export default class AccountStatement {
     this.#account = accountObject;
   }
 
-  getMaxStringLength(property) {
+  calculateColumnWidths(propertyName) {
     const transactions = this.#account.getTransactions();
 
-    let maxStringLength = transactions[0][property].toFixed(2).length;
-
-    transactions.forEach(transaction => {
-      if (transaction[property].toFixed(2).length > maxStringLength) maxStringLength = transaction[property].toFixed(2).length;
-    });
-
-    return maxStringLength;
-  }
-
-  calculateColumnWidths(propertyName) {
-    const maxLengthWithSpaces = this.getMaxStringLength(propertyName) + 2;
+    const maxLengthWithSpaces = getMaxStringLength(transactions, propertyName) + 2;
     const propertyNameWithSpaces = propertyName.length + 2;
 
     if (maxLengthWithSpaces > propertyNameWithSpaces) {
