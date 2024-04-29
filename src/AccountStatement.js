@@ -17,7 +17,7 @@ export default class AccountStatement {
     return maxStringLength;
   }
 
-  calculateColWidths(propertyName) {
+  calculateColumnWidths(propertyName) {
     const maxLengthWithSpaces = this.getMaxStringLength(propertyName) + 2;
     const propertyNameWithSpaces = propertyName.length + 2;
 
@@ -28,27 +28,23 @@ export default class AccountStatement {
     }
   }
 
-  createCols(colNames) {
-    const cols = new Array();
+  createColumns(columnNames) {
+    const columns = new Array();
 
-    colNames.forEach(name => {
-      cols.push({ name, width: this.calculateColWidths(name) });
+    columnNames.forEach(name => {
+      columns.push({ name, width: this.calculateColumnWidths(name) });
     });
 
-    return cols;
+    return columns;
   }
 
-  generateHeaderLine(colNames, cols) {
+  generateHeaderLine(columnNames, columns) {
     const cells = [ "date       ||" ];
 
-    colNames.forEach(colName => {
-      const findFunc = (col) => {
-        return colName === col.name;
-      };
+    columnNames.forEach(columnName => {
+      const width = columns.find((col) => columnName === col.name).width;
 
-      const width = cols.find(findFunc).width;
-
-      const cell = colName != "balance" ? ` ${colName} `.padEnd(width, " ") + "||" : ` ${colName}`.padEnd(width, " ");
+      const cell = columnName != "balance" ? ` ${columnName} `.padEnd(width, " ") + "||" : ` ${columnName}`.padEnd(width, " ");
 
       cells.push(cell);
     });
@@ -56,30 +52,26 @@ export default class AccountStatement {
     return cells.join("");
   }
 
-  generateBodyLine(cols, transaction, colNames) {
+  generateBodyLine(columns, transaction, columnNames) {
     const cells = [ `${transaction.date} ||` ];
 
-    colNames.forEach(colName => {
-      const findFunc = (col) => {
-        return colName === col.name;
-      };
-
-      const width = cols.find(findFunc).width;
+    columnNames.forEach(columnName => {
+      const width = columns.find((col) => columnName === col.name).width;
 
       let valueString;
-      if (colName === "credit" && transaction[colName] != 0) {
-        valueString = `\x1b[32m${transaction[colName].toFixed(2)}\x1b[0m`;
-      } else if (colName === "debit" && transaction[colName] != 0) {
-        valueString = `\x1b[31m${transaction[colName].toFixed(2)}\x1b[0m`;
-      } else if (colName === "balance" && transaction[colName] > 0) {
-        valueString = `\x1b[32m${transaction[colName].toFixed(2)}\x1b[0m`;
-      } else if (colName === "balance" && transaction[colName] <= 0) {
-        valueString = `\x1b[31m${transaction[colName].toFixed(2)}\x1b[0m`;
+      if (columnName === "credit" && transaction[columnName] != 0) {
+        valueString = `\x1b[32m${transaction[columnName].toFixed(2)}\x1b[0m`;
+      } else if (columnName === "debit" && transaction[columnName] != 0) {
+        valueString = `\x1b[31m${transaction[columnName].toFixed(2)}\x1b[0m`;
+      } else if (columnName === "balance" && transaction[columnName] > 0) {
+        valueString = `\x1b[32m${transaction[columnName].toFixed(2)}\x1b[0m`;
+      } else if (columnName === "balance" && transaction[columnName] <= 0) {
+        valueString = `\x1b[31m${transaction[columnName].toFixed(2)}\x1b[0m`;
       } else {
         valueString = "";
       }
 
-      const cell = colName != "balance" ? ` ${valueString} `.padEnd(width, " ") + "||" : ` ${valueString} `.padEnd(width, " ");
+      const cell = columnName != "balance" ? ` ${valueString} `.padEnd(width, " ") + "||" : ` ${valueString} `.padEnd(width, " ");
 
       cells.push(cell);
     });
@@ -88,14 +80,14 @@ export default class AccountStatement {
   }
 
   generateLines() {
-    const colNames = [ "credit", "debit", "balance" ];
-    const cols = this.createCols(colNames);
+    const columnNames = [ "credit", "debit", "balance" ];
+    const columns = this.createColumns(columnNames);
     const transactions = this.#account.getTransactions().reverse();
 
-    const lines = [ this.generateHeaderLine(colNames, cols) ];
+    const lines = [ this.generateHeaderLine(columnNames, columns) ];
 
     transactions.forEach(transaction => {
-      lines.push(this.generateBodyLine(cols, transaction, colNames));
+      lines.push(this.generateBodyLine(columns, transaction, columnNames));
     });
     
     return lines;
