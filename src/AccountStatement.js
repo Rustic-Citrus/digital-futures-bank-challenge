@@ -7,24 +7,24 @@ export default class AccountStatement {
     this.#account = accountObject;
   }
 
-  calculateColumnWidths(propertyName) {
-    const transactions = this.#account.getTransactions();
-
-    const maxLengthWithSpaces = getMaxStringLength(transactions, propertyName) + 2;
-    const propertyNameWithSpaces = propertyName.length + 2;
-
-    if (maxLengthWithSpaces > propertyNameWithSpaces) {
-      return maxLengthWithSpaces;
-    } else {
-      return propertyNameWithSpaces;
-    }
-  }
-
   createColumns(columnNames) {
+    const calculateColumnWidths = propertyName => {
+      const transactions = this.#account.getTransactions();
+
+      const maxLengthWithSpaces = getMaxStringLength(transactions, propertyName) + 2;
+      const propertyNameWithSpaces = propertyName.length + 2;
+  
+      if (maxLengthWithSpaces > propertyNameWithSpaces) {
+        return maxLengthWithSpaces;
+      } else {
+        return propertyNameWithSpaces;
+      }
+    }
+
     const columns = new Array();
 
     columnNames.forEach(name => {
-      columns.push({ name, width: this.calculateColumnWidths(name) });
+      columns.push({ name, width: calculateColumnWidths(name) });
     });
 
     return columns;
