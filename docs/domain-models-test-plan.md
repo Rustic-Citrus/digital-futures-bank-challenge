@@ -85,22 +85,24 @@
 
 ###  A function that prints to the console the date and amount of each transaction, as well as the new balance after the transaction, in a suitably formatted table, with debits shown in red and credits shown in green.
 
-| Object             | Property | Message                             | Output |
-| ------------------ | -------- | ----------------------------------- | ------ |
-| `AccountStatement` |          | `AccountStatement.printStatement()` |        |
+| Object             | Property | Message                             | Output          |
+| ------------------ | -------- | ----------------------------------- | --------------- |
+| `AccountStatement` |          | `AccountStatement.generateRows()`   | @Array[@String] |
+|                    |          | `AccountStatement.printStatement()` |                 |
 
 ### Summary
 
-| Object             | Property                                | Message                            | Output          |
-| ------------------ | --------------------------------------- | ---------------------------------- | --------------- |
-| `Account`          | `Account.#balance` @Number              | `Account.getBalance()`             | @Number         |
-|                    | `Account.#transactions` @Array[@Object] | `Account.deposit(amount, date)`    |                 |
-|                    |                                         | `Account.withdraw(amount, date)`   |                 |
-|                    | `Account.#hasRightToOverdraft` @Boolean | `Account.checkRightToOverdraft()`  | @Boolean        |
-|                    | `Account.#overdraftLimit` @Number       | `Account.getOverdraftLimit()`      | @Number         |
-|                    |                                         | `Account.getTransactions()`        | @Array[@Object] |
+| Object             | Property                                | Message                             | Output          |
+| ------------------ | --------------------------------------- | ----------------------------------- | --------------- |
+| `Account`          | `Account.#balance` @Number              | `Account.getBalance()`              | @Number         |
+|                    | `Account.#transactions` @Array[@Object] | `Account.deposit(amount, date)`     |                 |
+|                    |                                         | `Account.withdraw(amount, date)`    |                 |
+|                    | `Account.#hasRightToOverdraft` @Boolean | `Account.checkRightToOverdraft()`   | @Boolean        |
+|                    | `Account.#overdraftLimit` @Number       | `Account.getOverdraftLimit()`       | @Number         |
 |                    |                                         | `Account.setOverdraftLimit(amount)` |                 |
-| `AccountStatement` |                                         | `AccountStatement.printStatement()` |                 |
+|                    |                                         | `Account.getTransactions()`         | @Array[@Object] |
+| `AccountStatement` |                                         | `AccountStatement.generateRows()`   | @Array[@String] |
+|                    |                                         | `AccountStatement.printStatement()` |                 |
 
 ## Test Cases
 
