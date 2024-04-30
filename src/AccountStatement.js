@@ -7,9 +7,12 @@ export default class AccountStatement {
     this.#account = accountObject;
   }
 
-  generateLines() {
+  generateRows() {
     const createColumns = columnNames => {
+      // Nested function that generates the info about the columns.
+
       const calculateColumnWidths = propertyName => {
+        // Doubly-nested function that calculates the string length for each column.
         const transactions = this.#account.getTransactions();
         const padding = 2;
   
@@ -32,22 +35,24 @@ export default class AccountStatement {
       return columns;
     }
 
+    // Prepare data to generate the rows.
     const columnNames = [ "credit", "debit", "balance" ];
     const columns = createColumns(columnNames);
     const transactions = this.#account.getTransactions().reverse(); // As per user specifications.
-    const lines = new Array();
+    const rows = new Array();
 
+    // Generate the rows from the data.
     for (let i = 0; i <= transactions.length; i++) {
-      lines.push(generateRowFromObject(columns, columnNames, transactions[i-1], i));
+      rows.push(generateRowFromObject(columns, columnNames, transactions[i-1], i));
     }
     
-    return lines;
+    return rows;
   }
 
   printStatement() {
-    const lines = this.generateLines();
+    const rows = this.generateRows();
     
-    lines.forEach(line => {
+    rows.forEach(line => {
       console.log(line);
     });
   }
